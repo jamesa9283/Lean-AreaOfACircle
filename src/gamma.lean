@@ -16,6 +16,13 @@ lemma rΓ_eq_inv_Γ (z : ℂ) (n : ℕ) : Γ_series z n = (rΓ_series z n)⁻¹ 
 
 def ln_Gamma_series (z : ℂ) (n : ℕ) := z * log (n) - log z - ∑ k in finset.range n, log(z / (k+1) + 1)
 
+lemma lnG_def (z : ℂ) (n : ℕ) : ln_Gamma_series z n = z * log (n) - log z - ∑ k in finset.range n, log(z / (k+1) + 1) := rfl
+
 def ln_Gamma (x : ℝ) := x
 
-lemma ln_Γ_complex_converges (x : ℝ) (n : ℝ) : ∃ c : ℂ, filter.tends_to Γ_series c :=
+-- let us asssume convergence, because I don't know how to prove it.
+lemma ln_Γ_complex_converges (z : ℂ) (n : ℕ) : filter.tendsto (ln_Gamma_series z) (filter.at_top) (nhds z) :=
+begin
+  
+  sorry
+end

@@ -1,10 +1,9 @@
 import data.real.basic analysis.special_functions.trigonometric
 import measure_theory.interval_integral
 import data.real.sqrt
+import analysis.special_functions.pow
 
-localized "notation `π` := real.pi" in real
-
-open_locale filter
+open_locale real
 noncomputable theory
 open interval_integral
 
@@ -21,11 +20,34 @@ begin
     exact continuous_id.continuous_on }
 end
 
-def f (x : ℝ) := real.sqrt x
-
-example (r : ℝ) (x : ℝ) : ∫ x in (0: ℝ)..r, (real.sqrt (x^2 - r^2)) = PI*r^2 :=
+example (r : ℝ) : deriv (λ x : ℝ, (real.sqrt (r^2 - x^2))) = λ x, (-x/real.sqrt (r^2 - x^2)) :=
 begin
+  ext,
+  rw deriv_sqrt,
+  {
+    simp only [differentiable_at_const, mul_one, zero_sub, deriv_sub, differentiable_at_id', deriv_pow'', nat.cast_bit0, deriv_id'',
+  deriv_const', pow_one, differentiable_at.pow, nat.cast_one, mul_zero], 
+    
 
+    sorry
+  },
+  { 
+    sorry
+  },
+  {
+    
+  }
+end
+
+example (a b c : ℝ) : (a * c) / (b * c) = a/b := by library_search
+
+
+example (r : ℝ) (x : ℝ) : 4 * ∫ x in (0: ℝ)..r, (real.sqrt (r^2 - x^2)) = π*r^2 :=
+begin
+  have : deriv (λ x : ℝ, (real.sqrt (r^2 - x^2))) = λ x, (-x/real.sqrt (r^2 - x^2)),
+  { ext, sorry
+
+  },
   sorry
 end
 

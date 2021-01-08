@@ -1,6 +1,5 @@
 import data.real.basic analysis.special_functions.trigonometric
 import measure_theory.interval_integral
-import data.real.sqrt
 import analysis.special_functions.pow
 
 open_locale real
@@ -27,8 +26,6 @@ begin
   {
     simp only [differentiable_at_const, mul_one, zero_sub, deriv_sub, differentiable_at_id', deriv_pow'', nat.cast_bit0, deriv_id'',
   deriv_const', pow_one, differentiable_at.pow, nat.cast_one, mul_zero], 
-    
-
     sorry
   },
   { 
@@ -38,9 +35,6 @@ begin
     
   }
 end
-
-example (a b c : ℝ) : (a * c) / (b * c) = a/b := by library_search
-
 
 example (r : ℝ) (x : ℝ) : 4 * ∫ x in (0: ℝ)..r, (real.sqrt (r^2 - x^2)) = π*r^2 :=
 begin
